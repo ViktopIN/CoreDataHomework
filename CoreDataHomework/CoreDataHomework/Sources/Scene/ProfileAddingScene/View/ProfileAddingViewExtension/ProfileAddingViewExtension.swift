@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 extension ProfileAddingView {
     func createCustomTitleForNavigationBarView() -> UIView {

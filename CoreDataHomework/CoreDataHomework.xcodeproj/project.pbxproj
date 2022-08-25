@@ -12,9 +12,11 @@
 		84260B3028B7B3B600718B23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84260B2E28B7B3B600718B23 /* LaunchScreen.storyboard */; };
 		84260B3E28B7D8B400718B23 /* ProfileAddingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84260B3D28B7D8B400718B23 /* ProfileAddingView.swift */; };
 		84260B4028B7D8E400718B23 /* ProfileAddingViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84260B3F28B7D8E400718B23 /* ProfileAddingViewExtension.swift */; };
+		D8EDA3178456A06314A94A2B /* Pods_CoreDataHomework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6736F483192D154F8AFA9 /* Pods_CoreDataHomework.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C195BB7B36F1854D4D0E5F6 /* Pods-CoreDataHomework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreDataHomework.release.xcconfig"; path = "Target Support Files/Pods-CoreDataHomework/Pods-CoreDataHomework.release.xcconfig"; sourceTree = "<group>"; };
 		84260B2028B7B3B400718B23 /* CoreDataHomework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataHomework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84260B2328B7B3B400718B23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84260B2C28B7B3B600718B23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -22,6 +24,8 @@
 		84260B3128B7B3B600718B23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84260B3D28B7D8B400718B23 /* ProfileAddingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAddingView.swift; sourceTree = "<group>"; };
 		84260B3F28B7D8E400718B23 /* ProfileAddingViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAddingViewExtension.swift; sourceTree = "<group>"; };
+		8C2289213523038D6F9EFD16 /* Pods-CoreDataHomework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreDataHomework.debug.xcconfig"; path = "Target Support Files/Pods-CoreDataHomework/Pods-CoreDataHomework.debug.xcconfig"; sourceTree = "<group>"; };
+		EAB6736F483192D154F8AFA9 /* Pods_CoreDataHomework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoreDataHomework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8EDA3178456A06314A94A2B /* Pods_CoreDataHomework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50158B4FB964786119358D3D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8C2289213523038D6F9EFD16 /* Pods-CoreDataHomework.debug.xcconfig */,
+				0C195BB7B36F1854D4D0E5F6 /* Pods-CoreDataHomework.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		78192F3B66456EB098BF8010 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EAB6736F483192D154F8AFA9 /* Pods_CoreDataHomework.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		84260B1728B7B3B400718B23 = {
 			isa = PBXGroup;
 			children = (
 				84260B2228B7B3B400718B23 /* CoreDataHomework */,
 				84260B2128B7B3B400718B23 /* Products */,
+				50158B4FB964786119358D3D /* Pods */,
+				78192F3B66456EB098BF8010 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,9 +145,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84260B3428B7B3B600718B23 /* Build configuration list for PBXNativeTarget "CoreDataHomework" */;
 			buildPhases = (
+				A4A803B1CD3305DD29F6CB7F /* [CP] Check Pods Manifest.lock */,
 				84260B1C28B7B3B400718B23 /* Sources */,
 				84260B1D28B7B3B400718B23 /* Frameworks */,
 				84260B1E28B7B3B400718B23 /* Resources */,
+				1E66FEE4C7B8AE8D75A52033 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -177,6 +204,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1E66FEE4C7B8AE8D75A52033 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CoreDataHomework/Pods-CoreDataHomework-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CoreDataHomework/Pods-CoreDataHomework-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CoreDataHomework/Pods-CoreDataHomework-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A4A803B1CD3305DD29F6CB7F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CoreDataHomework-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		84260B1C28B7B3B400718B23 /* Sources */ = {
@@ -319,6 +388,7 @@
 		};
 		84260B3528B7B3B600718B23 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C2289213523038D6F9EFD16 /* Pods-CoreDataHomework.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -345,6 +415,7 @@
 		};
 		84260B3628B7B3B600718B23 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C195BB7B36F1854D4D0E5F6 /* Pods-CoreDataHomework.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
