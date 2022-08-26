@@ -54,14 +54,14 @@ extension ProfileAddingView {
         
         textField.snp.makeConstraints { make in
             make.width.equalTo(view.snp.width).multipliedBy(0.91)
-            make.height.equalTo(42)
+            make.height.equalTo(38)
             make.top.equalTo(view.snp.top)
             make.centerX.equalToSuperview()
         }
         
         button.snp.makeConstraints { make in
             make.width.equalTo(view.snp.width).multipliedBy(0.91)
-            make.height.equalTo(42)
+            make.height.equalTo(38)
             make.top.equalTo(textField.snp.bottom).offset(17)
             make.centerX.equalToSuperview()
         }

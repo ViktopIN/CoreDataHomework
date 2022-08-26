@@ -10,13 +10,13 @@ import SnapKit
 
 class ProfileAddingView: UIViewController {
 // MARK: - Properties
-    private lazy var countOfCells = Int(10)
+    private lazy var countOfCells = Int(12)
     private var cellHeight: CGFloat = 45
 // MARK: - Views
     private lazy var addingProfileView: UIView = createAddingProfileView()
     private var namesTableView = UITableView()
     
-// MARK: - Initialize
+// MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,7 +37,7 @@ class ProfileAddingView: UIViewController {
                                 forCellReuseIdentifier: CustomTableViewCell().identificator)
         
         namesTableView.dataSource = self
-//        namesTableView.delegate = self
+        namesTableView.delegate = self
     }
     private func setupHierarchy() {
         view.addSubview(addingProfileView)
@@ -58,7 +58,7 @@ class ProfileAddingView: UIViewController {
         addingProfileView.snp.makeConstraints { make in
             make.left.equalToSuperview()
             make.width.equalToSuperview()
-            make.height.equalTo(110)
+            make.height.equalTo(120)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
         
@@ -71,11 +71,13 @@ class ProfileAddingView: UIViewController {
     }
 }
 
+// MARK: - Extensions -
+
 extension ProfileAddingView: UITableViewDataSource {
 // TODO: - finish correct table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        countOfCells = 3
-        return 10
+        countOfCells = 12
+        return 12
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -94,6 +96,13 @@ extension ProfileAddingView: UITableViewDataSource {
         } else {
             return CGFloat(495)
         }
+    }
+}
+
+extension ProfileAddingView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let editSceneView = EditSceneView()
+        navigationController?.pushViewController(editSceneView, animated: true)
     }
 }
 
