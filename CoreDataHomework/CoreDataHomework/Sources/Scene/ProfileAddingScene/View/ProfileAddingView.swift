@@ -6,24 +6,41 @@
 //
 
 import UIKit
+import SnapKit
 
 class ProfileAddingView: UIViewController {
-
+// MARK: - Views
+    private lazy var addingProfileView: UIView = createAddingProfileView()
+    
+// MARK: - Initialize
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupHierarchy()
+        setupView()
+        setupLayout()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+// MARK: - Private methods
+    private func setupHierarchy() {
+        view.addSubview(addingProfileView)
     }
-    */
-
+    
+    private func setupView() {
+        view.backgroundColor = UIColor(red: 242/255,
+                                       green: 242/255,
+                                       blue: 247/255,
+                                       alpha: 100)
+        
+        self.title = "Users"
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    private func setupLayout() {
+        addingProfileView.snp.makeConstraints { make in
+            make.width.equalToSuperview()
+            make.height.equalTo(100)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+        }
+    }
 }
+

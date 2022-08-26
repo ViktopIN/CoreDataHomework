@@ -12,6 +12,8 @@
 		84260B3028B7B3B600718B23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84260B2E28B7B3B600718B23 /* LaunchScreen.storyboard */; };
 		84260B3E28B7D8B400718B23 /* ProfileAddingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84260B3D28B7D8B400718B23 /* ProfileAddingView.swift */; };
 		84260B4028B7D8E400718B23 /* ProfileAddingViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84260B3F28B7D8E400718B23 /* ProfileAddingViewExtension.swift */; };
+		8493425728B8B2A5009C5D7C /* AppDelegate extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493425628B8B2A5009C5D7C /* AppDelegate extension.swift */; };
+		8493425A28B8C73C009C5D7C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493425928B8C73C009C5D7C /* CustomTextField.swift */; };
 		D8EDA3178456A06314A94A2B /* Pods_CoreDataHomework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6736F483192D154F8AFA9 /* Pods_CoreDataHomework.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +26,8 @@
 		84260B3128B7B3B600718B23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84260B3D28B7D8B400718B23 /* ProfileAddingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAddingView.swift; sourceTree = "<group>"; };
 		84260B3F28B7D8E400718B23 /* ProfileAddingViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAddingViewExtension.swift; sourceTree = "<group>"; };
+		8493425628B8B2A5009C5D7C /* AppDelegate extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate extension.swift"; sourceTree = "<group>"; };
+		8493425928B8C73C009C5D7C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		8C2289213523038D6F9EFD16 /* Pods-CoreDataHomework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreDataHomework.debug.xcconfig"; path = "Target Support Files/Pods-CoreDataHomework/Pods-CoreDataHomework.debug.xcconfig"; sourceTree = "<group>"; };
 		EAB6736F483192D154F8AFA9 /* Pods_CoreDataHomework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoreDataHomework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -46,7 +50,6 @@
 				8C2289213523038D6F9EFD16 /* Pods-CoreDataHomework.debug.xcconfig */,
 				0C195BB7B36F1854D4D0E5F6 /* Pods-CoreDataHomework.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -99,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				84260B2328B7B3B400718B23 /* AppDelegate.swift */,
+				8493425628B8B2A5009C5D7C /* AppDelegate extension.swift */,
 			);
 			name = Application;
 			path = ..;
@@ -124,6 +128,7 @@
 		84260B3B28B7D85900718B23 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8493425828B8C713009C5D7C /* CustomTextField */,
 				84260B3C28B7D87900718B23 /* ProfileAddingViewExtension */,
 				84260B3D28B7D8B400718B23 /* ProfileAddingView.swift */,
 			);
@@ -136,6 +141,14 @@
 				84260B3F28B7D8E400718B23 /* ProfileAddingViewExtension.swift */,
 			);
 			path = ProfileAddingViewExtension;
+			sourceTree = "<group>";
+		};
+		8493425828B8C713009C5D7C /* CustomTextField */ = {
+			isa = PBXGroup;
+			children = (
+				8493425928B8C73C009C5D7C /* CustomTextField.swift */,
+			);
+			path = CustomTextField;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +268,8 @@
 				84260B2428B7B3B400718B23 /* AppDelegate.swift in Sources */,
 				84260B4028B7D8E400718B23 /* ProfileAddingViewExtension.swift in Sources */,
 				84260B3E28B7D8B400718B23 /* ProfileAddingView.swift in Sources */,
+				8493425728B8B2A5009C5D7C /* AppDelegate extension.swift in Sources */,
+				8493425A28B8C73C009C5D7C /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
