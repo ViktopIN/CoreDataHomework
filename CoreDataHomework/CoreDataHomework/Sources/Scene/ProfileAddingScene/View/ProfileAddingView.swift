@@ -38,7 +38,7 @@ class ProfileAddingView: UIViewController {
     private func setupLayout() {
         addingProfileView.snp.makeConstraints { make in
             make.width.equalToSuperview()
-            make.height.equalTo(100)
+            make.height.equalTo(110)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
     }

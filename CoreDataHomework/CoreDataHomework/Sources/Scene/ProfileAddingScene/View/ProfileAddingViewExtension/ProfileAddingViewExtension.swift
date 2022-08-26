@@ -38,7 +38,13 @@ extension ProfileAddingView {
             let button = UIButton(type: .system)
             
             button.translatesAutoresizingMaskIntoConstraints = false
+            
             button.setTitle("Press", for: .normal)
+            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+            button.setTitleColor(.white, for: .normal)
+            
+            button.layer.backgroundColor = UIColor.systemBlue.cgColor
+            button.layer.cornerRadius = 8
             
             return button
         }()
@@ -56,7 +62,8 @@ extension ProfileAddingView {
         button.snp.makeConstraints { make in
             make.width.equalTo(view.snp.width).multipliedBy(0.91)
             make.height.equalTo(38)
-            make.top.equalTo(textField.snp.bottom).offset(10)
+            make.top.equalTo(textField.snp.bottom).offset(17)
+            make.centerX.equalToSuperview()
         }
         
         return view
