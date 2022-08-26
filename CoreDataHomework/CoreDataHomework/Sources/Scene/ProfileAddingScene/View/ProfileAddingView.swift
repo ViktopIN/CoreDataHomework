@@ -27,7 +27,12 @@ class ProfileAddingView: UIViewController {
         setupLayout()
     }
     
-// MARK: - Private methods
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.subviews.forEach({ $0.removeFromSuperview() })
+    }
+    
+// MARK: - Settings
     private func tableViewConfiguration() {
         namesTableView.translatesAutoresizingMaskIntoConstraints = false
         namesTableView.layer.cornerRadius = 8

@@ -8,11 +8,11 @@
 import UIKit
 
 extension EditSceneView {
-    func createCustomEditBarButton() -> UIBarButtonItem {
+    func createCustomEditBarButton() -> UIButton {
         let button: UIButton = {
             let button = UIButton(type: .system)
             
-            button.setTitleColor(.black, for: .normal)
+            button.setTitleColor(.gray, for: .normal)
             button.setTitle("Edit", for: .normal)
             button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
             
@@ -22,18 +22,10 @@ extension EditSceneView {
             
             return button
         }()
-        
-        button.snp.makeConstraints { make in
-            make.width.equalTo(100)
-            make.height.equalTo(30)
-        }
-        
-        let buttonBarItem = UIBarButtonItem(customView: button)
-        
-        return buttonBarItem
+        return button
     }
     
-    func createCustomBackBarButton(back to: Selector) -> UIBarButtonItem {
+    func createCustomBackBarButton(back to: Selector) -> UIButton {
         let selector = to
         
         let button: UIButton = {
@@ -47,13 +39,6 @@ extension EditSceneView {
             return button
         }()
         
-        button.snp.makeConstraints { make in
-            make.width.equalTo(25)
-            make.height.equalTo(25)
-        }
-        
-        let buttonBarItem = UIBarButtonItem(customView: button)
-        
-        return buttonBarItem
+        return button
     }
 }

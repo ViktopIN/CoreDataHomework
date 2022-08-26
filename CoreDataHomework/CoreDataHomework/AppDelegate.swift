@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let profileAddingScene = ProfileAddingView()
         
-        let navigationController = UINavigationController(rootViewController: ProfileAddingView())
+        let navigationController = UINavigationController(rootViewController: profileAddingScene)
         setupNavigationBar()
         
         window = UIWindow(frame: UIScreen.main.bounds)
