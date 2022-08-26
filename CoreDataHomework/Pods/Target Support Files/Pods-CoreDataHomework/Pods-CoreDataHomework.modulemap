@@ -1,0 +1,6 @@
+framework module Pods_CoreDataHomework {
+  umbrella header "Pods-CoreDataHomework-umbrella.h"
+
+  export *
+  module * { export * }
+}

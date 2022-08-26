@@ -8,22 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		84260B2428B7B3B400718B23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84260B2328B7B3B400718B23 /* AppDelegate.swift */; };
-		84260B2628B7B3B400718B23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84260B2528B7B3B400718B23 /* SceneDelegate.swift */; };
-		84260B2828B7B3B400718B23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84260B2728B7B3B400718B23 /* ViewController.swift */; };
-		84260B2B28B7B3B400718B23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84260B2928B7B3B400718B23 /* Main.storyboard */; };
 		84260B2D28B7B3B600718B23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84260B2C28B7B3B600718B23 /* Assets.xcassets */; };
 		84260B3028B7B3B600718B23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84260B2E28B7B3B600718B23 /* LaunchScreen.storyboard */; };
+		84260B3E28B7D8B400718B23 /* ProfileAddingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84260B3D28B7D8B400718B23 /* ProfileAddingView.swift */; };
+		84260B4028B7D8E400718B23 /* ProfileAddingViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84260B3F28B7D8E400718B23 /* ProfileAddingViewExtension.swift */; };
+		8493425728B8B2A5009C5D7C /* AppDelegate extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493425628B8B2A5009C5D7C /* AppDelegate extension.swift */; };
+		8493425A28B8C73C009C5D7C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493425928B8C73C009C5D7C /* CustomTextField.swift */; };
+		8493425D28B8CD5A009C5D7C /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493425C28B8CD5A009C5D7C /* CustomTableViewCell.swift */; };
+		D8EDA3178456A06314A94A2B /* Pods_CoreDataHomework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6736F483192D154F8AFA9 /* Pods_CoreDataHomework.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C195BB7B36F1854D4D0E5F6 /* Pods-CoreDataHomework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreDataHomework.release.xcconfig"; path = "Target Support Files/Pods-CoreDataHomework/Pods-CoreDataHomework.release.xcconfig"; sourceTree = "<group>"; };
 		84260B2028B7B3B400718B23 /* CoreDataHomework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataHomework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84260B2328B7B3B400718B23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		84260B2528B7B3B400718B23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		84260B2728B7B3B400718B23 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		84260B2A28B7B3B400718B23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84260B2C28B7B3B600718B23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84260B2F28B7B3B600718B23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84260B3128B7B3B600718B23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84260B3D28B7D8B400718B23 /* ProfileAddingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAddingView.swift; sourceTree = "<group>"; };
+		84260B3F28B7D8E400718B23 /* ProfileAddingViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAddingViewExtension.swift; sourceTree = "<group>"; };
+		8493425628B8B2A5009C5D7C /* AppDelegate extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate extension.swift"; sourceTree = "<group>"; };
+		8493425928B8C73C009C5D7C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		8493425C28B8CD5A009C5D7C /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		8C2289213523038D6F9EFD16 /* Pods-CoreDataHomework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreDataHomework.debug.xcconfig"; path = "Target Support Files/Pods-CoreDataHomework/Pods-CoreDataHomework.debug.xcconfig"; sourceTree = "<group>"; };
+		EAB6736F483192D154F8AFA9 /* Pods_CoreDataHomework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoreDataHomework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +39,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8EDA3178456A06314A94A2B /* Pods_CoreDataHomework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50158B4FB964786119358D3D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8C2289213523038D6F9EFD16 /* Pods-CoreDataHomework.debug.xcconfig */,
+				0C195BB7B36F1854D4D0E5F6 /* Pods-CoreDataHomework.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		78192F3B66456EB098BF8010 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EAB6736F483192D154F8AFA9 /* Pods_CoreDataHomework.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		84260B1728B7B3B400718B23 = {
 			isa = PBXGroup;
 			children = (
 				84260B2228B7B3B400718B23 /* CoreDataHomework */,
 				84260B2128B7B3B400718B23 /* Products */,
+				50158B4FB964786119358D3D /* Pods */,
+				78192F3B66456EB098BF8010 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +84,82 @@
 		84260B2228B7B3B400718B23 /* CoreDataHomework */ = {
 			isa = PBXGroup;
 			children = (
-				84260B2328B7B3B400718B23 /* AppDelegate.swift */,
-				84260B2528B7B3B400718B23 /* SceneDelegate.swift */,
-				84260B2728B7B3B400718B23 /* ViewController.swift */,
-				84260B2928B7B3B400718B23 /* Main.storyboard */,
+				84260B3928B7D7CD00718B23 /* Sources */,
 				84260B2C28B7B3B600718B23 /* Assets.xcassets */,
 				84260B2E28B7B3B600718B23 /* LaunchScreen.storyboard */,
 				84260B3128B7B3B600718B23 /* Info.plist */,
 			);
 			path = CoreDataHomework;
+			sourceTree = "<group>";
+		};
+		84260B3728B7D7B600718B23 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				84260B3A28B7D7ED00718B23 /* ProfileAddingScene */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		84260B3828B7D7BF00718B23 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				84260B2328B7B3B400718B23 /* AppDelegate.swift */,
+				8493425628B8B2A5009C5D7C /* AppDelegate extension.swift */,
+			);
+			name = Application;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		84260B3928B7D7CD00718B23 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				84260B3828B7D7BF00718B23 /* Application */,
+				84260B3728B7D7B600718B23 /* Scene */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		84260B3A28B7D7ED00718B23 /* ProfileAddingScene */ = {
+			isa = PBXGroup;
+			children = (
+				84260B3B28B7D85900718B23 /* View */,
+			);
+			path = ProfileAddingScene;
+			sourceTree = "<group>";
+		};
+		84260B3B28B7D85900718B23 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8493425B28B8CD20009C5D7C /* CustomTableViewCell */,
+				8493425828B8C713009C5D7C /* CustomTextField */,
+				84260B3C28B7D87900718B23 /* ProfileAddingViewExtension */,
+				84260B3D28B7D8B400718B23 /* ProfileAddingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84260B3C28B7D87900718B23 /* ProfileAddingViewExtension */ = {
+			isa = PBXGroup;
+			children = (
+				84260B3F28B7D8E400718B23 /* ProfileAddingViewExtension.swift */,
+			);
+			path = ProfileAddingViewExtension;
+			sourceTree = "<group>";
+		};
+		8493425828B8C713009C5D7C /* CustomTextField */ = {
+			isa = PBXGroup;
+			children = (
+				8493425928B8C73C009C5D7C /* CustomTextField.swift */,
+			);
+			path = CustomTextField;
+			sourceTree = "<group>";
+		};
+		8493425B28B8CD20009C5D7C /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				8493425C28B8CD5A009C5D7C /* CustomTableViewCell.swift */,
+			);
+			path = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +169,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84260B3428B7B3B600718B23 /* Build configuration list for PBXNativeTarget "CoreDataHomework" */;
 			buildPhases = (
+				A4A803B1CD3305DD29F6CB7F /* [CP] Check Pods Manifest.lock */,
 				84260B1C28B7B3B400718B23 /* Sources */,
 				84260B1D28B7B3B400718B23 /* Frameworks */,
 				84260B1E28B7B3B400718B23 /* Resources */,
+				1E66FEE4C7B8AE8D75A52033 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,34 +224,70 @@
 			files = (
 				84260B3028B7B3B600718B23 /* LaunchScreen.storyboard in Resources */,
 				84260B2D28B7B3B600718B23 /* Assets.xcassets in Resources */,
-				84260B2B28B7B3B400718B23 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1E66FEE4C7B8AE8D75A52033 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CoreDataHomework/Pods-CoreDataHomework-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CoreDataHomework/Pods-CoreDataHomework-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CoreDataHomework/Pods-CoreDataHomework-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A4A803B1CD3305DD29F6CB7F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CoreDataHomework-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		84260B1C28B7B3B400718B23 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84260B2828B7B3B400718B23 /* ViewController.swift in Sources */,
+				8493425D28B8CD5A009C5D7C /* CustomTableViewCell.swift in Sources */,
 				84260B2428B7B3B400718B23 /* AppDelegate.swift in Sources */,
-				84260B2628B7B3B400718B23 /* SceneDelegate.swift in Sources */,
+				84260B4028B7D8E400718B23 /* ProfileAddingViewExtension.swift in Sources */,
+				84260B3E28B7D8B400718B23 /* ProfileAddingView.swift in Sources */,
+				8493425728B8B2A5009C5D7C /* AppDelegate extension.swift in Sources */,
+				8493425A28B8C73C009C5D7C /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		84260B2928B7B3B400718B23 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				84260B2A28B7B3B400718B23 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		84260B2E28B7B3B600718B23 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -282,6 +415,7 @@
 		};
 		84260B3528B7B3B600718B23 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C2289213523038D6F9EFD16 /* Pods-CoreDataHomework.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -291,7 +425,6 @@
 				INFOPLIST_FILE = CoreDataHomework/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -309,6 +442,7 @@
 		};
 		84260B3628B7B3B600718B23 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C195BB7B36F1854D4D0E5F6 /* Pods-CoreDataHomework.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -318,7 +452,6 @@
 				INFOPLIST_FILE = CoreDataHomework/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
