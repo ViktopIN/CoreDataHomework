@@ -21,6 +21,7 @@ class EditSceneView: UIViewController {
         return button
     }()
     
+    private lazy var nameTextField = addEditTextField(image: "", placeholder: "Name")
     
 // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -76,5 +77,34 @@ class EditSceneView: UIViewController {
 // MARK: - Methods
     @objc private func goBack() {
          navigationController?.popViewController(animated: true)
+    }
+    
+    private func addEditTextField(image: String, placeholder: String) -> UITextField {
+        let image = UIImage(systemName: image)
+        
+        let imageView = UIImageView(image: image)
+        
+        let textField: UITextField = {
+            let textField = UITextField()
+            
+            textField.borderStyle = .none
+            textField.leftViewMode = .always
+            textField.leftView = imageView
+            
+            textField.placeholder = placeholder
+            
+            return textField
+        }()
+        
+        let bottomLine = CALayer()
+        bottomLine.frame = CGRect(x: 0,
+                                  y: textField.frame.height - 1,
+                                  width: textField.frame.width,
+                                  height: 1)
+        bottomLine.borderColor = UIColor.gray.cgColor
+        
+        textField.layer.addSublayer(bottomLine)
+        
+        return textField
     }
 }
