@@ -18,5 +18,12 @@ class EditSceneView: UIViewController {
 // MARK: - Private func
     func setupView() {
         view.backgroundColor = .systemBackground
+        
+        navigationItem.rightBarButtonItem = createCustomEditBarButton()        
+        navigationItem.leftBarButtonItem = createCustomBackBarButton(back: #selector(goBack))
+    }
+// MARK: - Methods
+    @objc private func goBack() {
+        navigationController?.popViewController(animated: true)
     }
 }
