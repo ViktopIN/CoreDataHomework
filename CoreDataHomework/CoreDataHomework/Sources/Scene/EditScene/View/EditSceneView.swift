@@ -31,6 +31,7 @@ class EditSceneView: UIViewController {
         super.viewDidLoad()
         
         setupNavigationBar()
+        
         setupHierarchy()
         setupLayout()
         setupView()
@@ -52,30 +53,14 @@ class EditSceneView: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(80)
         }
         
-        nameTextField.snp.makeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(0.91)
-            make.height.equalTo(35)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(imageButton.snp.bottom).offset(38)
-        }
-        
-        dateBirthTextField.snp.makeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(0.91)
-            make.height.equalTo(35)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(nameTextField.snp.bottom).offset(28)
-        }
-        
-        currentCityTextField.snp.makeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(0.91)
-            make.height.equalTo(35)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(dateBirthTextField.snp.bottom).offset(28)
-        }
+        textFieldLayout(textField: nameTextField, topView: imageButton)
+        textFieldLayout(textField: dateBirthTextField, topView: nameTextField)
+        textFieldLayout(textField: currentCityTextField, topView: dateBirthTextField)
     }
     
     private func setupView() {
         view.backgroundColor = .systemBackground
+        
     }
 
     private func setupNavigationBar() {
@@ -106,7 +91,7 @@ class EditSceneView: UIViewController {
          navigationController?.popViewController(animated: true)
     }
     
-    private func addEditTextField(image: String, placeholder: String) -> UITextField {
+    private func addEditTextField(image: String, placeholder: String) -> EditTextField {
         let image = UIImage(systemName: image)?.withTintColor(UIColor.black,
                                                               renderingMode: .alwaysOriginal)
         
@@ -127,6 +112,7 @@ class EditSceneView: UIViewController {
             let textField = EditTextField()
             
             textField.borderStyle = .none
+            textField.backgroundColor = .lightGray.withAlphaComponent(0.2)
             textField.leftViewMode = .always
             textField.leftView = imageView
             textField.font = UIFont.systemFont(ofSize: 14)
@@ -136,15 +122,15 @@ class EditSceneView: UIViewController {
             return textField
         }()
         
-        let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0,
-                                  y: textField.frame.height - 1,
-                                  width: textField.frame.width,
-                                  height: 1)
-        bottomLine.borderColor = UIColor.gray.cgColor
-        
-        textField.layer.addSublayer(bottomLine)
-        
         return textField
+    }
+    
+    private func textFieldLayout(textField: EditTextField, topView: UIView) {
+        textField.snp.makeConstraints { make in
+            make.width.equalToSuperview().multipliedBy(0.91)
+            make.height.equalTo(45)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(topView.snp.bottom).offset(33)
+        }
     }
 }

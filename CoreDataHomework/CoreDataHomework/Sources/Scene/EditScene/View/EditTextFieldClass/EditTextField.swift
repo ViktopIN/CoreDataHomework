@@ -12,14 +12,14 @@ class EditTextField: UITextField {
     let insets: UIEdgeInsets
     
 // MARK: - Initialize
-    init(insets: UIEdgeInsets = UIEdgeInsets(top: 0,
-                                             left: 38,
-                                             bottom: 0,
+    init(insets: UIEdgeInsets = UIEdgeInsets(top: 15,
+                                             left: 42,
+                                             bottom: 15,
                                              right: 15)
     ){
         self.insets = insets
         super.init(frame: .zero)
-        
+        layer.cornerRadius = 7
     }
     
     required init?(coder: NSCoder) {
