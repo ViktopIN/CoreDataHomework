@@ -21,7 +21,10 @@ class EditSceneView: UIViewController {
         return button
     }()
     
-    private lazy var nameTextField = addEditTextField(image: "", placeholder: "Name")
+    private lazy var nameTextField = addEditTextField(image: "person", placeholder: "Name")
+    private lazy var dateBirthTextField = addEditTextField(image: "calendar", placeholder: "Date Birth")
+    private lazy var currentCityTextField = addEditTextField(image: "mappin.and.ellipse", placeholder: "Current City")
+
     
 // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -36,6 +39,9 @@ class EditSceneView: UIViewController {
 // MARK: - Settings
     private func setupHierarchy() {
         view.addSubview(imageButton)
+        view.addSubview(nameTextField)
+        view.addSubview(dateBirthTextField)
+        view.addSubview(currentCityTextField)
     }
     
     private func setupLayout() {
@@ -44,6 +50,27 @@ class EditSceneView: UIViewController {
             make.height.equalTo(imageButton.snp.width)
             make.centerX.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(80)
+        }
+        
+        nameTextField.snp.makeConstraints { make in
+            make.width.equalToSuperview().multipliedBy(0.91)
+            make.height.equalTo(35)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(imageButton.snp.bottom).offset(38)
+        }
+        
+        dateBirthTextField.snp.makeConstraints { make in
+            make.width.equalToSuperview().multipliedBy(0.91)
+            make.height.equalTo(35)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(nameTextField.snp.bottom).offset(28)
+        }
+        
+        currentCityTextField.snp.makeConstraints { make in
+            make.width.equalToSuperview().multipliedBy(0.91)
+            make.height.equalTo(35)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(dateBirthTextField.snp.bottom).offset(28)
         }
     }
     
@@ -80,16 +107,29 @@ class EditSceneView: UIViewController {
     }
     
     private func addEditTextField(image: String, placeholder: String) -> UITextField {
-        let image = UIImage(systemName: image)
+        let image = UIImage(systemName: image)?.withTintColor(UIColor.black,
+                                                              renderingMode: .alwaysOriginal)
         
-        let imageView = UIImageView(image: image)
+        let imageView: UIImageView = {
+            let imageView = UIImageView(image: image)
+            
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            
+            imageView.snp.makeConstraints { make in
+                make.width.equalTo(27)
+                make.height.equalTo(27)
+            }
+            
+            return imageView
+        }()
         
-        let textField: UITextField = {
-            let textField = UITextField()
+        let textField: EditTextField = {
+            let textField = EditTextField()
             
             textField.borderStyle = .none
             textField.leftViewMode = .always
             textField.leftView = imageView
+            textField.font = UIFont.systemFont(ofSize: 14)
             
             textField.placeholder = placeholder
             

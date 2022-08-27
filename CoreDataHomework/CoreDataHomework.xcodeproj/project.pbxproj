@@ -17,6 +17,7 @@
 		8493425D28B8CD5A009C5D7C /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493425C28B8CD5A009C5D7C /* CustomTableViewCell.swift */; };
 		8493426128B8E741009C5D7C /* EditSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493426028B8E741009C5D7C /* EditSceneView.swift */; };
 		8493426628B8F6A7009C5D7C /* EditSceneExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493426528B8F6A7009C5D7C /* EditSceneExtension.swift */; };
+		84EB0F1728BA16C100094724 /* EditTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB0F1628BA16C100094724 /* EditTextField.swift */; };
 		D8EDA3178456A06314A94A2B /* Pods_CoreDataHomework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6736F483192D154F8AFA9 /* Pods_CoreDataHomework.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		8493425C28B8CD5A009C5D7C /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		8493426028B8E741009C5D7C /* EditSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSceneView.swift; sourceTree = "<group>"; };
 		8493426528B8F6A7009C5D7C /* EditSceneExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSceneExtension.swift; sourceTree = "<group>"; };
+		84EB0F1628BA16C100094724 /* EditTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTextField.swift; sourceTree = "<group>"; };
 		8C2289213523038D6F9EFD16 /* Pods-CoreDataHomework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreDataHomework.debug.xcconfig"; path = "Target Support Files/Pods-CoreDataHomework/Pods-CoreDataHomework.debug.xcconfig"; sourceTree = "<group>"; };
 		EAB6736F483192D154F8AFA9 /* Pods_CoreDataHomework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoreDataHomework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -178,6 +180,7 @@
 		8493425F28B8DDB1009C5D7C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84EB0F1528BA167C00094724 /* EditTextFieldClass */,
 				8493426428B8F5A5009C5D7C /* EditSceneExtensioin */,
 				8493426028B8E741009C5D7C /* EditSceneView.swift */,
 			);
@@ -190,6 +193,14 @@
 				8493426528B8F6A7009C5D7C /* EditSceneExtension.swift */,
 			);
 			path = EditSceneExtensioin;
+			sourceTree = "<group>";
+		};
+		84EB0F1528BA167C00094724 /* EditTextFieldClass */ = {
+			isa = PBXGroup;
+			children = (
+				84EB0F1628BA16C100094724 /* EditTextField.swift */,
+			);
+			path = EditTextFieldClass;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +321,7 @@
 				84260B2428B7B3B400718B23 /* AppDelegate.swift in Sources */,
 				84260B4028B7D8E400718B23 /* ProfileAddingViewExtension.swift in Sources */,
 				8493426128B8E741009C5D7C /* EditSceneView.swift in Sources */,
+				84EB0F1728BA16C100094724 /* EditTextField.swift in Sources */,
 				8493426628B8F6A7009C5D7C /* EditSceneExtension.swift in Sources */,
 				84260B3E28B7D8B400718B23 /* ProfileAddingView.swift in Sources */,
 				8493425728B8B2A5009C5D7C /* AppDelegate extension.swift in Sources */,
