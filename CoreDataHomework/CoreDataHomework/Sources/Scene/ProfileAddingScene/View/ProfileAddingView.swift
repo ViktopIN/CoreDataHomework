@@ -208,7 +208,9 @@ extension ProfileAddingView: UITableViewDataSource {
 
 extension ProfileAddingView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.pushViewController(presenter.getEditView(), animated: true)
+        let name = persons[indexPath.row].value(forKeyPath: "name") as! String
+        navigationController?.pushViewController(presenter.getEditView(name: name),
+                                                 animated: true)
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {

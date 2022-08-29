@@ -14,7 +14,7 @@ protocol ProfileAddingPresenterProtocol {
          router: CoreDataRouterInputProtocol)
     func addingNewName(name: String)
     func deleteRow(delete data: NSManagedObject)
-    func getEditView() -> UIViewController
+    func getEditView(name: String) -> UIViewController
 }
 
 class ProfileAddingPresenter: ProfileAddingPresenterProtocol {
@@ -22,6 +22,7 @@ class ProfileAddingPresenter: ProfileAddingPresenterProtocol {
     private var view: ProfileAddingViewProtocol!
     private var container: NSPersistentContainer!
     private var router: CoreDataRouterInputProtocol!
+    private var gettingName: String!
     
 // MARK: - Initialize
     required init(view: ProfileAddingViewProtocol, container: NSPersistentContainer, router: CoreDataRouterInputProtocol) {
@@ -68,8 +69,9 @@ class ProfileAddingPresenter: ProfileAddingPresenterProtocol {
         }
     }
     
-    func getEditView() -> UIViewController {
+    func getEditView(name: String) -> UIViewController {
         let view = router.recieveEditSceneView()
+        router.getName(name: name)
         return view
     }
 }

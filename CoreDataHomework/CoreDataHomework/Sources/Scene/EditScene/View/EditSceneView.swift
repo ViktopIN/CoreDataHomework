@@ -10,6 +10,7 @@ import SnapKit
 
 protocol EditSceneViewProtocol {
     func getView() -> UIViewController
+    func textEnable()
 }
 
 class EditSceneView: UIViewController {
@@ -25,6 +26,36 @@ class EditSceneView: UIViewController {
         button.imageView?.contentMode = .scaleAspectFill
         button.imageView?.layer.cornerRadius = view.bounds.width / 4
         
+        return button
+    }()
+    
+    private lazy var editButton: UIButton = {
+        let button = UIButton(type: .system)
+        
+        button.setTitleColor(.gray, for: .normal)
+        button.setTitle("Edit", for: .normal)
+
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        
+        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.borderWidth = 2
+        button.layer.cornerRadius = 8
+        
+        button.addTarget(self, action: #selector(saveOrEdit), for: .touchUpInside)
+
+        return button
+    }()
+    
+    private lazy var backButton: UIButton = {
+        let button = UIButton(type: .system)
+        
+        button.setBackgroundImage(UIImage(systemName: "arrow.backward")?.withTintColor(.gray).withRenderingMode(.alwaysOriginal),
+                                  for: .normal)
+        button.contentMode = .scaleToFill
+        
+        
+        button.addTarget(self, action: #selector(goBack),
+                         for: .touchUpInside)
         return button
     }()
     
@@ -81,9 +112,6 @@ class EditSceneView: UIViewController {
     private func setupNavigationBar() {
         navigationItem.hidesBackButton = true
         
-        let editButton = createCustomEditBarButton()
-        let backButton = createCustomBackBarButton(back: #selector(goBack))
-        
         navigationController?.navigationBar.addSubview(editButton)
         editButton.snp.makeConstraints { make in
             make.bottom.equalToSuperview()
@@ -103,7 +131,16 @@ class EditSceneView: UIViewController {
     
 // MARK: - Methods
     @objc private func goBack() {
-         navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func saveOrEdit() {
+        presenter.saveOrEdit()
+        if editButton.currentTitle == "Save" {
+            editButton.setTitle("Edit", for: .normal)
+        } else {
+            editButton.setTitle("Save", for: .normal)
+        }
     }
     
     private func addEditTextField(image: String, placeholder: String) -> EditTextField {
@@ -156,5 +193,14 @@ class EditSceneView: UIViewController {
 extension EditSceneView: EditSceneViewProtocol {
     func getView() -> UIViewController {
         return self
+    }
+    
+    func textEnable() {
+        let textFields = [nameTextField,
+                          dateBirthTextField,
+                          currentCityTextField]
+        textFields.forEach { editTextField in
+            editTextField.isUserInteractionEnabled.toggle()
+        }
     }
 }

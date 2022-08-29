@@ -11,6 +11,8 @@ import CoreData
 protocol EditScenePresenterProtocol {
     init(view: EditSceneViewProtocol,
          router: CoreDataRouterOutputProtocol)
+    func saveOrEdit()
+    func editName() -> String
 }
 
 class EditScenePresenter: EditScenePresenterProtocol {
@@ -18,11 +20,19 @@ class EditScenePresenter: EditScenePresenterProtocol {
     private var router: CoreDataRouterOutputProtocol!
     private var view: EditSceneViewProtocol!
     private var container: NSPersistentContainer!
-
+    
 // MARK: - Initialize
     required init(view: EditSceneViewProtocol, router: CoreDataRouterOutputProtocol) {
         self.view = view
         self.router = router
         self.container = router.getContainer()
+    }
+// MARK: - Methods
+    func saveOrEdit() {
+        view.textEnable()
+    }
+    
+    func editName() -> String {
+        
     }
 }
