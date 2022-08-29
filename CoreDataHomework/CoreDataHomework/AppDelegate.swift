@@ -16,11 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 // TODO: - checking variables
         let profileAddingScene = ProfileAddingView()
+        let editSceneView = EditSceneView()
         profileAddingScene.container = persistentContainer
-        let presenter = ProfileAddingPresenter(view: profileAddingScene,
-                                               container: profileAddingScene.container)
-        profileAddingScene.presenter = presenter
+        let router = CoreDataRouter(container: profileAddingScene.container,
+                                    getView: editSceneView)
+        let profileAddingScenePresenter = ProfileAddingPresenter(view: profileAddingScene,
+                                                                 container: profileAddingScene.container,
+                                                                 router: router)
+        profileAddingScene.presenter = profileAddingScenePresenter
         
+       
+        let editScenePresenter = EditScenePresenter(view: editSceneView, router: router)
+                
+    
         let navigationController = UINavigationController(rootViewController: profileAddingScene)
         setupNavigationBar()
         

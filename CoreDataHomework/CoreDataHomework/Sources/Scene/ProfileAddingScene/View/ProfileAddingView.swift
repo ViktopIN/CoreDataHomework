@@ -208,8 +208,7 @@ extension ProfileAddingView: UITableViewDataSource {
 
 extension ProfileAddingView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let editSceneView = EditSceneView()
-        navigationController?.pushViewController(editSceneView, animated: true)
+        navigationController?.pushViewController(presenter.getEditView(), animated: true)
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -219,17 +218,12 @@ extension ProfileAddingView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.beginUpdates()
-
-            container.viewContext.delete(persons.remove(at: indexPath.row))
+            let deleteObject = persons.remove(at: indexPath.row)
+            
+            presenter.deleteRow(delete: deleteObject)
             
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
-            do {
-                try container.viewContext.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
         }
     }
 }

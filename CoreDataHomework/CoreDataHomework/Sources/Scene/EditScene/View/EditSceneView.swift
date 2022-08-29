@@ -8,7 +8,14 @@
 import UIKit
 import SnapKit
 
+protocol EditSceneViewProtocol {
+    func getView() -> UIViewController
+}
+
 class EditSceneView: UIViewController {
+// MARK: - Properties
+    var presenter: EditScenePresenterProtocol!
+    
 // MARK: - Views
     private lazy var imageButton: UIButton = {
         let button = UIButton()
@@ -30,6 +37,14 @@ class EditSceneView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBar()
+        
+        setupHierarchy()
+        setupLayout()
+        setupView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         setupNavigationBar()
         
         setupHierarchy()
@@ -119,6 +134,8 @@ class EditSceneView: UIViewController {
             
             textField.placeholder = placeholder
             
+            textField.isUserInteractionEnabled = false
+            
             return textField
         }()
         
@@ -132,5 +149,12 @@ class EditSceneView: UIViewController {
             make.centerX.equalToSuperview()
             make.top.equalTo(topView.snp.bottom).offset(33)
         }
+    }
+}
+
+// MARK: - Extensions
+extension EditSceneView: EditSceneViewProtocol {
+    func getView() -> UIViewController {
+        return self
     }
 }

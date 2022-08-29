@@ -11,6 +11,8 @@
 		84260B2D28B7B3B600718B23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84260B2C28B7B3B600718B23 /* Assets.xcassets */; };
 		84260B3028B7B3B600718B23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84260B2E28B7B3B600718B23 /* LaunchScreen.storyboard */; };
 		84260B3E28B7D8B400718B23 /* ProfileAddingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84260B3D28B7D8B400718B23 /* ProfileAddingView.swift */; };
+		842FC3EB28BD0077005F8492 /* EditScenePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FC3EA28BD0077005F8492 /* EditScenePresenter.swift */; };
+		842FC3F028BD01D2005F8492 /* CoreDataHWRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FC3EF28BD01D2005F8492 /* CoreDataHWRouter.swift */; };
 		8439BE3028BBC926001C104E /* ProfileAddingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8439BE2F28BBC926001C104E /* ProfileAddingPresenter.swift */; };
 		8439BE3328BCB5CA001C104E /* CoreDataHomework.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8439BE3128BCB5CA001C104E /* CoreDataHomework.xcdatamodeld */; };
 		8493425728B8B2A5009C5D7C /* AppDelegate extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493425628B8B2A5009C5D7C /* AppDelegate extension.swift */; };
@@ -29,6 +31,8 @@
 		84260B2F28B7B3B600718B23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84260B3128B7B3B600718B23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84260B3D28B7D8B400718B23 /* ProfileAddingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAddingView.swift; sourceTree = "<group>"; };
+		842FC3EA28BD0077005F8492 /* EditScenePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScenePresenter.swift; sourceTree = "<group>"; };
+		842FC3EF28BD01D2005F8492 /* CoreDataHWRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHWRouter.swift; sourceTree = "<group>"; };
 		8439BE2F28BBC926001C104E /* ProfileAddingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAddingPresenter.swift; sourceTree = "<group>"; };
 		8439BE3228BCB5CA001C104E /* CoreDataHomework.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataHomework.xcdatamodel; sourceTree = "<group>"; };
 		8493425628B8B2A5009C5D7C /* AppDelegate extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate extension.swift"; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 		84260B3728B7D7B600718B23 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				842FC3EC28BD0196005F8492 /* Router */,
 				84260B3A28B7D7ED00718B23 /* ProfileAddingScene */,
 				8493425E28B8DD9F009C5D7C /* EditScene */,
 				8439BE2A28BBB885001C104E /* Model */,
@@ -145,6 +150,22 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		842FC3E928BCFF87005F8492 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				842FC3EA28BD0077005F8492 /* EditScenePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		842FC3EC28BD0196005F8492 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				842FC3EF28BD01D2005F8492 /* CoreDataHWRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		8439BE2A28BBB885001C104E /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +193,7 @@
 		8493425E28B8DD9F009C5D7C /* EditScene */ = {
 			isa = PBXGroup;
 			children = (
+				842FC3E928BCFF87005F8492 /* Presenter */,
 				8493425F28B8DDB1009C5D7C /* View */,
 			);
 			path = EditScene;
@@ -322,6 +344,8 @@
 				84EB0F1728BA16C100094724 /* EditTextField.swift in Sources */,
 				8439BE3328BCB5CA001C104E /* CoreDataHomework.xcdatamodeld in Sources */,
 				8493426628B8F6A7009C5D7C /* EditSceneExtension.swift in Sources */,
+				842FC3F028BD01D2005F8492 /* CoreDataHWRouter.swift in Sources */,
+				842FC3EB28BD0077005F8492 /* EditScenePresenter.swift in Sources */,
 				84260B3E28B7D8B400718B23 /* ProfileAddingView.swift in Sources */,
 				8439BE3028BBC926001C104E /* ProfileAddingPresenter.swift in Sources */,
 				8493425728B8B2A5009C5D7C /* AppDelegate extension.swift in Sources */,
