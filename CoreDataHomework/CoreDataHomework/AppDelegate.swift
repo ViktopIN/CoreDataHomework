@@ -16,7 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 // TODO: - checking variables
         let profileAddingScene = ProfileAddingView()
-        let presenter = ProfileAddingPresenter(view: profileAddingScene)
+        profileAddingScene.container = persistentContainer
+        let presenter = ProfileAddingPresenter(view: profileAddingScene,
+                                               container: profileAddingScene.container)
         profileAddingScene.presenter = presenter
         
         let navigationController = UINavigationController(rootViewController: profileAddingScene)

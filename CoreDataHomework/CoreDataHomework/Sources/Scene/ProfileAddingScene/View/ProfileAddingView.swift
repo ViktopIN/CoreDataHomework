@@ -15,8 +15,11 @@ protocol ProfileAddingViewProtocol {
 
 class ProfileAddingView: UIViewController {
 // MARK: - Properties
-    private lazy var countOfCells = persons.count
+    private var countOfCells: Int {
+        persons.count
+    }
     private var cellHeight: CGFloat = 45
+    var container: NSPersistentContainer!
     var persons: [NSManagedObject] = []
     var presenter: ProfileAddingPresenterProtocol!
     
@@ -77,17 +80,14 @@ class ProfileAddingView: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.subviews.forEach({ $0.removeFromSuperview() })
-     
-        guard let appDelegate =
-          UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        let managedContext = appDelegate.persistentContainer.viewContext
+    
+        let managedContext = container.viewContext
 
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Person")
+        fetchRequest.returnsObjectsAsFaults = false
 
         do {
-          persons = try managedContext.fetch(fetchRequest)
+            persons = try managedContext.fetch(fetchRequest)
         } catch let error as NSError {
           print("Could not fetch. \(error), \(error.userInfo)")
         }
@@ -120,6 +120,10 @@ class ProfileAddingView: UIViewController {
                                        alpha: 100)
         self.title = "Users"
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        guard container != nil else {
+             fatalError("This view needs a persistent container.")
+         }
     }
     
     private func setupLayout() {
@@ -145,10 +149,9 @@ class ProfileAddingView: UIViewController {
         }
         
         namesTableView.snp.makeConstraints { make in
-            make.top.equalTo(addingProfileView.snp.bottom).offset(32)
             make.width.equalToSuperview().multipliedBy(0.91)
-            make.height.equalTo(getHeight())
             make.centerX.equalToSuperview()
+            make.top.equalTo(addingProfileView.snp.bottom).offset(35)
         }
     }
 
@@ -169,22 +172,23 @@ class ProfileAddingView: UIViewController {
             return nil
         }
     }
-    
-    private func getHeight() -> CGFloat {
-        if countOfCells < 11 {
-            let height = CGFloat(countOfCells) * cellHeight
-            return height
-        } else {
-            return CGFloat(495)
-        }
-    }
 }
 
 // MARK: - Extensions -
 
 extension ProfileAddingView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return persons.count
+        let countOfCells = persons.count
+        namesTableView.snp.makeConstraints { make in
+            var heightTable = CGFloat()
+            if countOfCells < 11 {
+                heightTable = CGFloat(countOfCells) * cellHeight
+            } else {
+                heightTable = 495
+            }
+            make.height.equalTo(heightTable)
+        }
+        return countOfCells
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -208,6 +212,5 @@ extension ProfileAddingView: ProfileAddingViewProtocol {
     func reloadTableView(person: NSManagedObject) {
         self.persons.append(person)
         self.namesTableView.reloadData()
-        print(persons)
     }
 }

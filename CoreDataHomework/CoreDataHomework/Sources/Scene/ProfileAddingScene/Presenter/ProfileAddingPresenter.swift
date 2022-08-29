@@ -9,17 +9,19 @@ import UIKit
 import CoreData
 
 protocol ProfileAddingPresenterProtocol {
-    init(view: ProfileAddingViewProtocol)
+    init(view: ProfileAddingViewProtocol, container: NSPersistentContainer)
     func addingNewName(name: String)
 }
 
 class ProfileAddingPresenter: ProfileAddingPresenterProtocol {
 // MARK: - Properties
     private var view: ProfileAddingViewProtocol!
+    private var container: NSPersistentContainer!
     
 // MARK: - Initialize
-    required init(view: ProfileAddingViewProtocol) {
+    required init(view: ProfileAddingViewProtocol, container: NSPersistentContainer) {
         self.view = view
+        self.container = container
     }
     
 // MARK: - Methods
@@ -33,16 +35,12 @@ class ProfileAddingPresenter: ProfileAddingPresenterProtocol {
                 }
             }
         }
-        guard let appDelegate =
-                UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        let managedContext = appDelegate.persistentContainer.viewContext
+     
+        let managedContext = container.viewContext
       
-
         let entity = NSEntityDescription.entity(forEntityName: "Person",
                                    in: managedContext)!
-      
+        
         let person = NSManagedObject(entity: entity,
                                    insertInto: managedContext)
 
