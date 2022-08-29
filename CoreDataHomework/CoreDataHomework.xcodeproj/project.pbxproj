@@ -15,7 +15,6 @@
 		8439BE3328BCB5CA001C104E /* CoreDataHomework.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8439BE3128BCB5CA001C104E /* CoreDataHomework.xcdatamodeld */; };
 		8493425728B8B2A5009C5D7C /* AppDelegate extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493425628B8B2A5009C5D7C /* AppDelegate extension.swift */; };
 		8493425A28B8C73C009C5D7C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493425928B8C73C009C5D7C /* CustomTextField.swift */; };
-		8493425D28B8CD5A009C5D7C /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493425C28B8CD5A009C5D7C /* CustomTableViewCell.swift */; };
 		8493426128B8E741009C5D7C /* EditSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493426028B8E741009C5D7C /* EditSceneView.swift */; };
 		8493426628B8F6A7009C5D7C /* EditSceneExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493426528B8F6A7009C5D7C /* EditSceneExtension.swift */; };
 		84EB0F1728BA16C100094724 /* EditTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB0F1628BA16C100094724 /* EditTextField.swift */; };
@@ -34,7 +33,6 @@
 		8439BE3228BCB5CA001C104E /* CoreDataHomework.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataHomework.xcdatamodel; sourceTree = "<group>"; };
 		8493425628B8B2A5009C5D7C /* AppDelegate extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate extension.swift"; sourceTree = "<group>"; };
 		8493425928B8C73C009C5D7C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-		8493425C28B8CD5A009C5D7C /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		8493426028B8E741009C5D7C /* EditSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSceneView.swift; sourceTree = "<group>"; };
 		8493426528B8F6A7009C5D7C /* EditSceneExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSceneExtension.swift; sourceTree = "<group>"; };
 		84EB0F1628BA16C100094724 /* EditTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTextField.swift; sourceTree = "<group>"; };
@@ -141,7 +139,6 @@
 		84260B3B28B7D85900718B23 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8493425B28B8CD20009C5D7C /* CustomTableViewCell */,
 				8493425828B8C713009C5D7C /* CustomTextField */,
 				84260B3D28B7D8B400718B23 /* ProfileAddingView.swift */,
 			);
@@ -170,14 +167,6 @@
 				8493425928B8C73C009C5D7C /* CustomTextField.swift */,
 			);
 			path = CustomTextField;
-			sourceTree = "<group>";
-		};
-		8493425B28B8CD20009C5D7C /* CustomTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				8493425C28B8CD5A009C5D7C /* CustomTableViewCell.swift */,
-			);
-			path = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
 		8493425E28B8DD9F009C5D7C /* EditScene */ = {
@@ -328,7 +317,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8493425D28B8CD5A009C5D7C /* CustomTableViewCell.swift in Sources */,
 				84260B2428B7B3B400718B23 /* AppDelegate.swift in Sources */,
 				8493426128B8E741009C5D7C /* EditSceneView.swift in Sources */,
 				84EB0F1728BA16C100094724 /* EditTextField.swift in Sources */,

@@ -18,6 +18,7 @@ class ProfileAddingView: UIViewController {
     private var countOfCells: Int {
         persons.count
     }
+    var bottomConstraint: Constraint!
     private var cellHeight: CGFloat = 45
     var container: NSPersistentContainer!
     var persons: [NSManagedObject] = []
@@ -99,8 +100,8 @@ class ProfileAddingView: UIViewController {
         namesTableView.layer.cornerRadius = 8
         namesTableView.rowHeight = cellHeight
         
-        namesTableView.register(CustomTableViewCell.self,
-                                forCellReuseIdentifier: CustomTableViewCell().identificator)
+        namesTableView.register(UITableViewCell.self,
+                                forCellReuseIdentifier: "Cell")
         
         namesTableView.dataSource = self
         namesTableView.delegate = self
@@ -152,10 +153,21 @@ class ProfileAddingView: UIViewController {
             make.width.equalToSuperview().multipliedBy(0.91)
             make.centerX.equalToSuperview()
             make.top.equalTo(addingProfileView.snp.bottom).offset(35)
+            self.bottomConstraint = make.height.equalTo(45).constraint
         }
     }
 
 // MARK: - Methods
+    private func getTableViewCellsConstraint() -> CGFloat {
+        var heightTable = CGFloat()
+        if countOfCells < 11 {
+            heightTable = CGFloat(countOfCells) * cellHeight
+        } else {
+            heightTable = 495
+        }
+        return heightTable
+    }
+    
     @objc func addNewName() {
         if let newName = saveNewName() {
             presenter.addingNewName(name: newName)
@@ -178,25 +190,18 @@ class ProfileAddingView: UIViewController {
 
 extension ProfileAddingView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let countOfCells = persons.count
-        tableView.snp.makeConstraints { make in
-            var heightTable = CGFloat()
-            if countOfCells < 11 {
-                heightTable = CGFloat(countOfCells) * cellHeight
-            } else {
-                heightTable = 495
-            }
-            make.height.equalTo(heightTable)
-        }
+        bottomConstraint.update(offset: getTableViewCellsConstraint() - 45)
+        
         return countOfCells
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let person = persons[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell().identificator,
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell",
                                                  for: indexPath)
         cell.textLabel?.text = person.value(forKeyPath: "name") as? String
         cell.accessoryType = .disclosureIndicator
+        
         return cell
     }
 }
@@ -214,11 +219,17 @@ extension ProfileAddingView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.beginUpdates()
-            
+
             container.viewContext.delete(persons.remove(at: indexPath.row))
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
-    
             tableView.endUpdates()
+            do {
+                try container.viewContext.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
         }
     }
 }
@@ -226,7 +237,7 @@ extension ProfileAddingView: UITableViewDelegate {
 // MARK: - Protocol Extension
 extension ProfileAddingView: ProfileAddingViewProtocol {
     func reloadTableView(person: NSManagedObject) {
-        self.persons.append(person)
-        self.namesTableView.reloadData()
+        persons.insert(person, at: persons.startIndex)
+        namesTableView.reloadData()
     }
 }
