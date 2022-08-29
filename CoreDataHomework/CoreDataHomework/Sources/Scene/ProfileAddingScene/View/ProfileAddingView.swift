@@ -179,7 +179,7 @@ class ProfileAddingView: UIViewController {
 extension ProfileAddingView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let countOfCells = persons.count
-        namesTableView.snp.makeConstraints { make in
+        tableView.snp.makeConstraints { make in
             var heightTable = CGFloat()
             if countOfCells < 11 {
                 heightTable = CGFloat(countOfCells) * cellHeight
@@ -196,6 +196,7 @@ extension ProfileAddingView: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell().identificator,
                                                  for: indexPath)
         cell.textLabel?.text = person.value(forKeyPath: "name") as? String
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
 }
@@ -204,6 +205,21 @@ extension ProfileAddingView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let editSceneView = EditSceneView()
         navigationController?.pushViewController(editSceneView, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.beginUpdates()
+            
+            container.viewContext.delete(persons.remove(at: indexPath.row))
+            tableView.deleteRows(at: [indexPath], with: .fade)
+    
+            tableView.endUpdates()
+        }
     }
 }
 
