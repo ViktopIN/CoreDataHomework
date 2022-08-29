@@ -7,14 +7,65 @@
 
 import UIKit
 import SnapKit
+import CoreData
+
+protocol ProfileAddingViewProtocol {
+    func reloadTableView(person: NSManagedObject)
+}
 
 class ProfileAddingView: UIViewController {
 // MARK: - Properties
-    private lazy var countOfCells = Int(12)
+    private var countOfCells: Int {
+        persons.count
+    }
+    var bottomConstraint: Constraint!
     private var cellHeight: CGFloat = 45
+    var container: NSPersistentContainer!
+    var persons: [NSManagedObject] = []
+    var presenter: ProfileAddingPresenterProtocol!
+    
 // MARK: - Views
-    private lazy var addingProfileView: UIView = createAddingProfileView()
-    private var namesTableView = UITableView()
+    private lazy var namesTableView = UITableView()
+    private lazy var  addingProfileView: UIView = {
+        let view = UIView()
+        
+        view.backgroundColor = .white
+        
+        return view
+    }()
+    
+    private lazy var textField: CustomTextField = {
+        let textField = CustomTextField()
+        
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        
+        textField.placeholder = "Print your name here"
+        textField.font = UIFont.systemFont(ofSize: 14)
+                    
+        textField.backgroundColor = UIColor(red: 242/255,
+                                            green: 242/255,
+                                            blue: 247/255,
+                                            alpha: 100)
+        
+        return textField
+    }()
+    
+    private lazy var button: UIButton = {
+        let button = UIButton(type: .system)
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        button.setTitle("Press", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setTitleColor(.white, for: .normal)
+        
+        button.layer.backgroundColor = UIColor.systemBlue.cgColor
+        button.layer.cornerRadius = 8
+        
+        button.addTarget(self, action: #selector(addNewName), for: .touchUpInside)
+        
+        return button
+    }()
     
 // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -30,6 +81,17 @@ class ProfileAddingView: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.subviews.forEach({ $0.removeFromSuperview() })
+    
+        let managedContext = container.viewContext
+
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Person")
+        fetchRequest.returnsObjectsAsFaults = false
+
+        do {
+            persons = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+          print("Could not fetch. \(error), \(error.userInfo)")
+        }
     }
     
 // MARK: - Settings
@@ -38,14 +100,17 @@ class ProfileAddingView: UIViewController {
         namesTableView.layer.cornerRadius = 8
         namesTableView.rowHeight = cellHeight
         
-        namesTableView.register(CustomTableViewCell.self,
-                                forCellReuseIdentifier: CustomTableViewCell().identificator)
+        namesTableView.register(UITableViewCell.self,
+                                forCellReuseIdentifier: "Cell")
         
         namesTableView.dataSource = self
         namesTableView.delegate = self
     }
+    
     private func setupHierarchy() {
         view.addSubview(addingProfileView)
+        addingProfileView.addSubview(textField)
+        addingProfileView.addSubview(button)
         view.addSubview(namesTableView)
     }
     
@@ -54,12 +119,29 @@ class ProfileAddingView: UIViewController {
                                        green: 242/255,
                                        blue: 247/255,
                                        alpha: 100)
-        
         self.title = "Users"
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        guard container != nil else {
+             fatalError("This view needs a persistent container.")
+         }
     }
     
     private func setupLayout() {
+        textField.snp.makeConstraints { make in
+            make.width.equalToSuperview().multipliedBy(0.91)
+            make.height.equalTo(42)
+            make.top.equalToSuperview()
+            make.centerX.equalToSuperview()
+        }
+        
+        button.snp.makeConstraints { make in
+            make.width.equalToSuperview().multipliedBy(0.91)
+            make.height.equalTo(42)
+            make.top.equalTo(textField.snp.bottom).offset(17)
+            make.centerX.equalToSuperview()
+        }
+        
         addingProfileView.snp.makeConstraints { make in
             make.left.equalToSuperview()
             make.width.equalToSuperview()
@@ -68,10 +150,38 @@ class ProfileAddingView: UIViewController {
         }
         
         namesTableView.snp.makeConstraints { make in
-            make.top.equalTo(addingProfileView.snp.bottom).offset(32)
             make.width.equalToSuperview().multipliedBy(0.91)
-            make.height.equalTo(getHeight())
             make.centerX.equalToSuperview()
+            make.top.equalTo(addingProfileView.snp.bottom).offset(35)
+            self.bottomConstraint = make.height.equalTo(45).constraint
+        }
+    }
+
+// MARK: - Methods
+    private func getTableViewCellsConstraint() -> CGFloat {
+        var heightTable = CGFloat()
+        if countOfCells < 11 {
+            heightTable = CGFloat(countOfCells) * cellHeight
+        } else {
+            heightTable = 495
+        }
+        return heightTable
+    }
+    
+    @objc func addNewName() {
+        if let newName = saveNewName() {
+            presenter.addingNewName(name: newName)
+        }
+    }
+    
+    func saveNewName() -> String? {
+        var name = String()
+        if let text = textField.text {
+            name = text
+            textField.text = nil
+            return name
+        } else {
+            return nil
         }
     }
 }
@@ -79,28 +189,20 @@ class ProfileAddingView: UIViewController {
 // MARK: - Extensions -
 
 extension ProfileAddingView: UITableViewDataSource {
-// TODO: - finish correct table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        countOfCells = 12
-        return 12
+        bottomConstraint.update(offset: getTableViewCellsConstraint() - 45)
+        
+        return countOfCells
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.namesTableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath)
-        
+        let person = persons[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell",
+                                                 for: indexPath)
+        cell.textLabel?.text = person.value(forKeyPath: "name") as? String
         cell.accessoryType = .disclosureIndicator
-        cell.textLabel?.text = "nanana"
         
         return cell
-    }
-    
-    private func getHeight() -> CGFloat {
-        if countOfCells < 11 {
-            let height = CGFloat(countOfCells) * cellHeight
-            return height
-        } else {
-            return CGFloat(495)
-        }
     }
 }
 
@@ -109,5 +211,33 @@ extension ProfileAddingView: UITableViewDelegate {
         let editSceneView = EditSceneView()
         navigationController?.pushViewController(editSceneView, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.beginUpdates()
+
+            container.viewContext.delete(persons.remove(at: indexPath.row))
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
+            do {
+                try container.viewContext.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
 }
 
+// MARK: - Protocol Extension
+extension ProfileAddingView: ProfileAddingViewProtocol {
+    func reloadTableView(person: NSManagedObject) {
+        persons.insert(person, at: persons.startIndex)
+        namesTableView.reloadData()
+    }
+}
