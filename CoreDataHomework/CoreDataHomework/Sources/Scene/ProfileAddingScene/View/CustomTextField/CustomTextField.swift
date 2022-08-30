@@ -12,16 +12,13 @@ class CustomTextField: UITextField {
     let insets: UIEdgeInsets
     
 // MARK: - Initialize
-    init(insets: UIEdgeInsets = UIEdgeInsets(top: 10,
-                                             left: 12,
-                                             bottom: 10,
-                                             right: 15)
+    init(insets: UIEdgeInsets = ProfileAddingView.Metrics.textFieldInsetEdges
     ){
         self.insets = insets
         super.init(frame: .zero)
         
         layer.borderColor = UIColor.clear.cgColor
-        layer.cornerRadius = 8
+        layer.cornerRadius = ProfileAddingView.Metrics.textFieldsLayerButtonCornerRadius
     }
     
     required init?(coder: NSCoder) {

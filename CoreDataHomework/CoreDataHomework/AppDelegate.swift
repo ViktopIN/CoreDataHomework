@@ -13,15 +13,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-// TODO: - checking variables
-        let profileAddingScene = ProfileAddingView()
-        profileAddingScene.container = persistentContainer
-        let presenter = ProfileAddingPresenter(view: profileAddingScene,
-                                               container: profileAddingScene.container)
-        profileAddingScene.presenter = presenter
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let container = persistentContainer
         
-        let navigationController = UINavigationController(rootViewController: profileAddingScene)
+        let getConfiguration = ConfigurationProject()
+        
+        let getViewToImplementation = getConfiguration.configuration(container: container)
+        
+        let navigationController = UINavigationController(rootViewController: getViewToImplementation)
         setupNavigationBar()
         
         window = UIWindow(frame: UIScreen.main.bounds)
