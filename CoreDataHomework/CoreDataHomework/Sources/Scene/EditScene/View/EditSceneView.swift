@@ -106,6 +106,7 @@ class EditSceneView: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .systemBackground
+        nameTextField.text = presenter.editName()
         
     }
 

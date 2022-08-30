@@ -33,6 +33,6 @@ class EditScenePresenter: EditScenePresenterProtocol {
     }
     
     func editName() -> String {
-        
+        return router.recieveName()
     }
 }
