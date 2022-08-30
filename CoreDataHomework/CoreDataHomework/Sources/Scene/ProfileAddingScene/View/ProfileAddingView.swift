@@ -93,6 +93,7 @@ class ProfileAddingView: UIViewController {
           print("Could not fetch. \(error), \(error.userInfo)")
         }
         namesTableView.reloadData()
+        persons = persons.reversed()
     }
     
 // MARK: - Settings
@@ -126,6 +127,8 @@ class ProfileAddingView: UIViewController {
         guard container != nil else {
              fatalError("This view needs a persistent container.")
          }
+        
+        persons = persons.reversed()
     }
     
     private func setupLayout() {
@@ -191,7 +194,7 @@ class ProfileAddingView: UIViewController {
 
 extension ProfileAddingView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        bottomConstraint.update(offset: getTableViewCellsConstraint() - 45)
+        bottomConstraint.update(offset: getTableViewCellsConstraint())
         
         return countOfCells
     }

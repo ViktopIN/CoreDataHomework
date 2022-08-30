@@ -16,6 +16,7 @@
 		842FC3F628BD1735005F8492 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FC3F528BD1735005F8492 /* Configuration.swift */; };
 		8439BE3028BBC926001C104E /* ProfileAddingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8439BE2F28BBC926001C104E /* ProfileAddingPresenter.swift */; };
 		8439BE3328BCB5CA001C104E /* CoreDataHomework.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8439BE3128BCB5CA001C104E /* CoreDataHomework.xcdatamodeld */; };
+		8443959B28BE2C6000EF1EDA /* EditSceneViewExstensionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443959A28BE2C6000EF1EDA /* EditSceneViewExstensionTextField.swift */; };
 		8493425728B8B2A5009C5D7C /* AppDelegate extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493425628B8B2A5009C5D7C /* AppDelegate extension.swift */; };
 		8493425A28B8C73C009C5D7C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493425928B8C73C009C5D7C /* CustomTextField.swift */; };
 		8493426128B8E741009C5D7C /* EditSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493426028B8E741009C5D7C /* EditSceneView.swift */; };
@@ -36,6 +37,7 @@
 		842FC3F528BD1735005F8492 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		8439BE2F28BBC926001C104E /* ProfileAddingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAddingPresenter.swift; sourceTree = "<group>"; };
 		8439BE3228BCB5CA001C104E /* CoreDataHomework.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataHomework.xcdatamodel; sourceTree = "<group>"; };
+		8443959A28BE2C6000EF1EDA /* EditSceneViewExstensionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSceneViewExstensionTextField.swift; sourceTree = "<group>"; };
 		8493425628B8B2A5009C5D7C /* AppDelegate extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate extension.swift"; sourceTree = "<group>"; };
 		8493425928B8C73C009C5D7C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		8493426028B8E741009C5D7C /* EditSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSceneView.swift; sourceTree = "<group>"; };
@@ -95,9 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				84260B3928B7D7CD00718B23 /* Sources */,
-				84260B2C28B7B3B600718B23 /* Assets.xcassets */,
-				84260B2E28B7B3B600718B23 /* LaunchScreen.storyboard */,
-				84260B3128B7B3B600718B23 /* Info.plist */,
+				8443959828BE1D3B00EF1EDA /* Resources */,
 			);
 			path = CoreDataHomework;
 			sourceTree = "<group>";
@@ -191,6 +191,16 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		8443959828BE1D3B00EF1EDA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				84260B2C28B7B3B600718B23 /* Assets.xcassets */,
+				84260B2E28B7B3B600718B23 /* LaunchScreen.storyboard */,
+				84260B3128B7B3B600718B23 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		8493425828B8C713009C5D7C /* CustomTextField */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +223,7 @@
 			children = (
 				84EB0F1528BA167C00094724 /* EditTextFieldClass */,
 				8493426028B8E741009C5D7C /* EditSceneView.swift */,
+				8443959A28BE2C6000EF1EDA /* EditSceneViewExstensionTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -344,6 +355,7 @@
 				84EB0F1728BA16C100094724 /* EditTextField.swift in Sources */,
 				8439BE3328BCB5CA001C104E /* CoreDataHomework.xcdatamodeld in Sources */,
 				842FC3F028BD01D2005F8492 /* CoreDataHWRouter.swift in Sources */,
+				8443959B28BE2C6000EF1EDA /* EditSceneViewExstensionTextField.swift in Sources */,
 				842FC3F628BD1735005F8492 /* Configuration.swift in Sources */,
 				842FC3EB28BD0077005F8492 /* EditScenePresenter.swift in Sources */,
 				84260B3E28B7D8B400718B23 /* ProfileAddingView.swift in Sources */,
@@ -490,7 +502,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CoreDataHomework/Info.plist;
+				INFOPLIST_FILE = CoreDataHomework/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -518,7 +530,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CoreDataHomework/Info.plist;
+				INFOPLIST_FILE = CoreDataHomework/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

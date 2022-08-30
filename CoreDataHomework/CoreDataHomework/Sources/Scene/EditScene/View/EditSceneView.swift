@@ -18,6 +18,7 @@ class EditSceneView: UIViewController {
     var presenter: EditScenePresenterProtocol!
     
 // MARK: - Views
+    private lazy var datePicker = UIDatePicker()
     private lazy var imageButton: UIButton = {
         let button = UIButton()
         
@@ -69,6 +70,8 @@ class EditSceneView: UIViewController {
         super.viewDidLoad()
         
         setupNavigationBar()
+        getDatePicker()
+        
         
         setupHierarchy()
         setupLayout()
@@ -77,6 +80,7 @@ class EditSceneView: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setupNavigationBar()
+        getDatePicker()
         
         setupHierarchy()
         setupLayout()
@@ -106,10 +110,13 @@ class EditSceneView: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .systemBackground
+        
         nameTextField.text = presenter.getNameFromProdileAddingScene().name
         dateBirthTextField.text = presenter.getNameFromProdileAddingScene().birthDate
         currentCityTextField.text = presenter.getNameFromProdileAddingScene().currentCity 
-
+        [nameTextField,
+         dateBirthTextField,
+         currentCityTextField].forEach { $0.delegate = self }
     }
 
     private func setupNavigationBar() {
@@ -133,6 +140,33 @@ class EditSceneView: UIViewController {
     }
     
 // MARK: - Methods
+    func getDatePicker() {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
+                                         target: nil,
+                                         action: #selector(donePressed))
+        
+        toolbar.setItems([doneButton], animated: true)
+        
+        dateBirthTextField.inputAccessoryView = toolbar
+        dateBirthTextField.inputView = datePicker
+        
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    @objc private func donePressed() {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        
+        dateBirthTextField.text = formatter.string(from: datePicker.date)
+        view.endEditing(true)
+    }
+    
     @objc private func goBack() {
         navigationController?.popViewController(animated: true)
     }
@@ -189,7 +223,8 @@ class EditSceneView: UIViewController {
         return textField
     }
     
-    private func textFieldLayout(textField: EditTextField, topView: UIView) {
+    private func textFieldLayout(textField: EditTextField,
+                                 topView: UIView) {
         textField.snp.makeConstraints { make in
             make.width.equalToSuperview().multipliedBy(0.91)
             make.height.equalTo(45)

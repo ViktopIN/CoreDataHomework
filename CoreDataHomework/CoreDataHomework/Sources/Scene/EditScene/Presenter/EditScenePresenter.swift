@@ -49,7 +49,7 @@ class EditScenePresenter: EditScenePresenterProtocol {
         strings.0 = currentObject.value(forKeyPath: "name") as? String ?? ""
         strings.1 = currentObject.value(forKeyPath: "birthDate") as? String ?? ""
         strings.2 = currentObject.value(forKeyPath: "currentCity") as? String ?? ""
-
+        
         
         return strings
     }
@@ -57,7 +57,11 @@ class EditScenePresenter: EditScenePresenterProtocol {
     func saveNewData(name: String,
                      birthDate: String,
                      currentCity: String) {
-        currentObject.setValue(name, forKey: "name")
+        var mainName = name
+        if mainName == "" || mainName == " " {
+            mainName = "noName"
+        }
+        currentObject.setValue(mainName, forKey: "name")
         currentObject.setValue(birthDate, forKey: "birthDate")
         currentObject.setValue(currentCity, forKey: "currentCity")
         do {
