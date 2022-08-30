@@ -11,19 +11,19 @@ import CoreData
 protocol CoreDataRouterOutputProtocol {
     init(container: NSPersistentContainer, getView: UIViewController)
     func getContainer() -> NSPersistentContainer
-    func recieveName() -> String
+    func recieveName() -> NSManagedObjectID
 }
 
 protocol CoreDataRouterInputProtocol {
     func recieveEditSceneView() -> UIViewController
-    func getName(name: String)
+    func getName(name: NSManagedObjectID)
 }
 
 class CoreDataRouter: CoreDataRouterOutputProtocol {
 // MARK: - Properties
     var container: NSPersistentContainer!
     var view: UIViewController!
-    var name: String!
+    var name: NSManagedObjectID!
     
 //MARK: - Initialize
     required init(container: NSPersistentContainer, getView: UIViewController) {
@@ -35,7 +35,7 @@ class CoreDataRouter: CoreDataRouterOutputProtocol {
         return container
     }
     
-    func recieveName() -> String {
+    func recieveName() -> NSManagedObjectID {
         return name
     }
 }
@@ -46,7 +46,7 @@ extension CoreDataRouter: CoreDataRouterInputProtocol {
         return view
     }
     
-    func getName(name: String) {
+    func getName(name: NSManagedObjectID) {
         self.name = name
     }
 }

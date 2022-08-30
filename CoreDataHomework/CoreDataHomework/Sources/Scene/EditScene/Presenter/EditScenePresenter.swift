@@ -12,7 +12,12 @@ protocol EditScenePresenterProtocol {
     init(view: EditSceneViewProtocol,
          router: CoreDataRouterOutputProtocol)
     func saveOrEdit()
-    func editName() -> String
+    func getNameFromProdileAddingScene() -> (name: String,
+                                             birthDate: String,
+                                             currentCity: String)
+    func saveNewData(name: String,
+                     birthDate: String,
+                     currentCity: String)
 }
 
 class EditScenePresenter: EditScenePresenterProtocol {
@@ -20,6 +25,7 @@ class EditScenePresenter: EditScenePresenterProtocol {
     private var router: CoreDataRouterOutputProtocol!
     private var view: EditSceneViewProtocol!
     private var container: NSPersistentContainer!
+    private var currentObject: NSManagedObject!
     
 // MARK: - Initialize
     required init(view: EditSceneViewProtocol, router: CoreDataRouterOutputProtocol) {
@@ -32,7 +38,32 @@ class EditScenePresenter: EditScenePresenterProtocol {
         view.textEnable()
     }
     
-    func editName() -> String {
-        return router.recieveName()
+    func getNameFromProdileAddingScene() -> (name: String,
+                                             birthDate: String,
+                                             currentCity: String) {
+        var strings: (name: String,
+                      birthDate: String,
+                      currentCity: String)
+        
+        currentObject = container.viewContext.object(with: router.recieveName())
+        strings.0 = currentObject.value(forKeyPath: "name") as? String ?? ""
+        strings.1 = currentObject.value(forKeyPath: "birthDate") as? String ?? ""
+        strings.2 = currentObject.value(forKeyPath: "currentCity") as? String ?? ""
+
+        
+        return strings
+    }
+    
+    func saveNewData(name: String,
+                     birthDate: String,
+                     currentCity: String) {
+        currentObject.setValue(name, forKey: "name")
+        currentObject.setValue(birthDate, forKey: "birthDate")
+        currentObject.setValue(currentCity, forKey: "currentCity")
+        do {
+            try container.viewContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
     }
 }

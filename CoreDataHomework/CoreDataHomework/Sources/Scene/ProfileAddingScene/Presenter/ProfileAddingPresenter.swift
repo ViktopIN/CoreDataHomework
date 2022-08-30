@@ -14,7 +14,7 @@ protocol ProfileAddingPresenterProtocol {
          router: CoreDataRouterInputProtocol)
     func addingNewName(name: String)
     func deleteRow(delete data: NSManagedObject)
-    func getEditView(name: String) -> UIViewController
+    func getEditView(name: NSManagedObjectID) -> UIViewController
 }
 
 class ProfileAddingPresenter: ProfileAddingPresenterProtocol {
@@ -43,6 +43,11 @@ class ProfileAddingPresenter: ProfileAddingPresenterProtocol {
                 }
             }
         }
+        
+        if name == "" || name == " " {
+            return
+        }
+        
         let managedContext = container.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Person",
                                    in: managedContext)!
@@ -69,7 +74,7 @@ class ProfileAddingPresenter: ProfileAddingPresenterProtocol {
         }
     }
     
-    func getEditView(name: String) -> UIViewController {
+    func getEditView(name: NSManagedObjectID) -> UIViewController {
         let view = router.recieveEditSceneView()
         router.getName(name: name)
         return view

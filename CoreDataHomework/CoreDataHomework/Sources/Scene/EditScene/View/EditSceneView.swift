@@ -106,8 +106,10 @@ class EditSceneView: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .systemBackground
-        nameTextField.text = presenter.editName()
-        
+        nameTextField.text = presenter.getNameFromProdileAddingScene().name
+        dateBirthTextField.text = presenter.getNameFromProdileAddingScene().birthDate
+        currentCityTextField.text = presenter.getNameFromProdileAddingScene().currentCity 
+
     }
 
     private func setupNavigationBar() {
@@ -139,6 +141,12 @@ class EditSceneView: UIViewController {
         presenter.saveOrEdit()
         if editButton.currentTitle == "Save" {
             editButton.setTitle("Edit", for: .normal)
+            let name = nameTextField.text
+            let birthDate = dateBirthTextField.text
+            let city = currentCityTextField.text
+            presenter.saveNewData(name: name ?? "",
+                                  birthDate: birthDate ?? "",
+                                  currentCity: city ?? "")
         } else {
             editButton.setTitle("Save", for: .normal)
         }
@@ -169,6 +177,7 @@ class EditSceneView: UIViewController {
             textField.leftViewMode = .always
             textField.leftView = imageView
             textField.font = UIFont.systemFont(ofSize: 14)
+            textField.textColor = .gray
             
             textField.placeholder = placeholder
             
@@ -201,6 +210,13 @@ extension EditSceneView: EditSceneViewProtocol {
                           dateBirthTextField,
                           currentCityTextField]
         textFields.forEach { editTextField in
+            if editTextField.isUserInteractionEnabled == false {
+                editTextField.backgroundColor = .white
+                editTextField.textColor = .black
+            } else {
+                editTextField.backgroundColor = .lightGray.withAlphaComponent(0.2)
+                editTextField.textColor = .gray
+            }
             editTextField.isUserInteractionEnabled.toggle()
         }
     }

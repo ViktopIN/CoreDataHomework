@@ -92,6 +92,7 @@ class ProfileAddingView: UIViewController {
         } catch let error as NSError {
           print("Could not fetch. \(error), \(error.userInfo)")
         }
+        namesTableView.reloadData()
     }
     
 // MARK: - Settings
@@ -208,7 +209,7 @@ extension ProfileAddingView: UITableViewDataSource {
 
 extension ProfileAddingView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let name = persons[indexPath.row].value(forKeyPath: "name") as! String
+        let name = persons[indexPath.row].objectID
         navigationController?.pushViewController(presenter.getEditView(name: name),
                                                  animated: true)
     }
