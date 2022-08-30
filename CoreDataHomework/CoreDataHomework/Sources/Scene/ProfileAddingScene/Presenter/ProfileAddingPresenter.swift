@@ -12,6 +12,9 @@ protocol ProfileAddingPresenterProtocol {
     init(view: ProfileAddingViewProtocol,
          container: NSPersistentContainer,
          router: CoreDataRouterInputProtocol)
+    func getTableViewHeight(count: Int,
+                            height: CGFloat) -> CGFloat
+    func saveNewName(textField: UITextField) -> String?
     func addingNewName(name: String)
     func deleteRow(delete data: NSManagedObject)
     func getEditView(name: NSManagedObjectID) -> UIViewController
@@ -32,6 +35,29 @@ class ProfileAddingPresenter: ProfileAddingPresenterProtocol {
     }
     
 // MARK: - Methods
+    func getTableViewHeight(count: Int,
+                            height: CGFloat) -> CGFloat {
+        var tableHeight = CGFloat()
+        if count < 11 {
+            tableHeight = CGFloat(count) * height
+        } else {
+            tableHeight = ProfileAddingView.Metrics.tableViewMaxHeight
+        }
+        
+        return tableHeight
+    }
+    
+    func saveNewName(textField: UITextField) -> String? {
+        var name = String()
+        if let text = textField.text {
+            name = text
+            textField.text = nil
+            return name
+        } else {
+            return nil
+        }
+    }
+    
     func addingNewName(name: String) {
         for (num, char) in name.enumerated() {
             if char == " " && num > 0 {

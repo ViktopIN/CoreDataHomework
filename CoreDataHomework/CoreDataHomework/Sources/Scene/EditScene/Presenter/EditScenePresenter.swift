@@ -11,13 +11,10 @@ import CoreData
 protocol EditScenePresenterProtocol {
     init(view: EditSceneViewProtocol,
          router: CoreDataRouterOutputProtocol)
-    func saveOrEdit()
+    func saveOrEdit(editButton: UIButton, textFields: [UITextField])
     func getNameFromProdileAddingScene() -> (name: String,
                                              birthDate: String,
                                              currentCity: String)
-    func saveNewData(name: String,
-                     birthDate: String,
-                     currentCity: String)
 }
 
 class EditScenePresenter: EditScenePresenterProtocol {
@@ -34,8 +31,30 @@ class EditScenePresenter: EditScenePresenterProtocol {
         self.container = router.getContainer()
     }
 // MARK: - Methods
-    func saveOrEdit() {
-        view.textEnable()
+    func saveOrEdit(editButton: UIButton, textFields: [UITextField]) {
+        if editButton.currentTitle == "Save" {
+            editButton.setTitle("Edit", for: .normal)
+            let name = textFields[0].text ?? ""
+            let birthDate = textFields[1].text ?? ""
+            let city = textFields[2].text ?? ""
+            
+            saveNewData(name: name,
+                        birthDate: birthDate,
+                        currentCity: city)
+        } else {
+            editButton.setTitle("Save", for: .normal)
+        }
+        
+        textFields.forEach { editTextField in
+            if editTextField.isUserInteractionEnabled == false {
+                editTextField.backgroundColor = .white
+                editTextField.textColor = .black
+            } else {
+                editTextField.backgroundColor = .lightGray.withAlphaComponent(0.2)
+                editTextField.textColor = .gray
+            }
+            editTextField.isUserInteractionEnabled.toggle()
+        }
     }
     
     func getNameFromProdileAddingScene() -> (name: String,
@@ -54,7 +73,7 @@ class EditScenePresenter: EditScenePresenterProtocol {
         return strings
     }
     
-    func saveNewData(name: String,
+    private func saveNewData(name: String,
                      birthDate: String,
                      currentCity: String) {
         var mainName = name

@@ -10,7 +10,6 @@ import SnapKit
 
 protocol EditSceneViewProtocol {
     func getView() -> UIViewController
-    func textEnable()
 }
 
 class EditSceneView: UIViewController {
@@ -172,18 +171,9 @@ class EditSceneView: UIViewController {
     }
     
     @objc private func saveOrEdit() {
-        presenter.saveOrEdit()
-        if editButton.currentTitle == "Save" {
-            editButton.setTitle("Edit", for: .normal)
-            let name = nameTextField.text
-            let birthDate = dateBirthTextField.text
-            let city = currentCityTextField.text
-            presenter.saveNewData(name: name ?? "",
-                                  birthDate: birthDate ?? "",
-                                  currentCity: city ?? "")
-        } else {
-            editButton.setTitle("Save", for: .normal)
-        }
+        presenter.saveOrEdit(editButton: editButton, textFields: [nameTextField,
+                                                                  dateBirthTextField,
+                                                                  currentCityTextField])
     }
     
     private func addEditTextField(image: String, placeholder: String) -> EditTextField {
@@ -238,21 +228,5 @@ class EditSceneView: UIViewController {
 extension EditSceneView: EditSceneViewProtocol {
     func getView() -> UIViewController {
         return self
-    }
-    
-    func textEnable() {
-        let textFields = [nameTextField,
-                          dateBirthTextField,
-                          currentCityTextField]
-        textFields.forEach { editTextField in
-            if editTextField.isUserInteractionEnabled == false {
-                editTextField.backgroundColor = .white
-                editTextField.textColor = .black
-            } else {
-                editTextField.backgroundColor = .lightGray.withAlphaComponent(0.2)
-                editTextField.textColor = .gray
-            }
-            editTextField.isUserInteractionEnabled.toggle()
-        }
     }
 }

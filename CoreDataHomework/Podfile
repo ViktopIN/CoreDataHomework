@@ -4,8 +4,6 @@
 target 'CoreDataHomework' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
-  # Pods for CoreDataHomework
   pod 'SnapKit'
-
+  # Pods for CoreDataHomework
 end

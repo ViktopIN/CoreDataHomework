@@ -19,7 +19,7 @@ class EditTextField: UITextField {
     ){
         self.insets = insets
         super.init(frame: .zero)
-        layer.cornerRadius = 7
+        layer.cornerRadius = 6
     }
     
     required init?(coder: NSCoder) {

@@ -17,6 +17,7 @@
 		8439BE3028BBC926001C104E /* ProfileAddingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8439BE2F28BBC926001C104E /* ProfileAddingPresenter.swift */; };
 		8439BE3328BCB5CA001C104E /* CoreDataHomework.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8439BE3128BCB5CA001C104E /* CoreDataHomework.xcdatamodeld */; };
 		8443959B28BE2C6000EF1EDA /* EditSceneViewExstensionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443959A28BE2C6000EF1EDA /* EditSceneViewExstensionTextField.swift */; };
+		8443959D28BE423E00EF1EDA /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443959C28BE423E00EF1EDA /* Metrics.swift */; };
 		8493425728B8B2A5009C5D7C /* AppDelegate extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493425628B8B2A5009C5D7C /* AppDelegate extension.swift */; };
 		8493425A28B8C73C009C5D7C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493425928B8C73C009C5D7C /* CustomTextField.swift */; };
 		8493426128B8E741009C5D7C /* EditSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493426028B8E741009C5D7C /* EditSceneView.swift */; };
@@ -38,6 +39,7 @@
 		8439BE2F28BBC926001C104E /* ProfileAddingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAddingPresenter.swift; sourceTree = "<group>"; };
 		8439BE3228BCB5CA001C104E /* CoreDataHomework.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataHomework.xcdatamodel; sourceTree = "<group>"; };
 		8443959A28BE2C6000EF1EDA /* EditSceneViewExstensionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSceneViewExstensionTextField.swift; sourceTree = "<group>"; };
+		8443959C28BE423E00EF1EDA /* Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
 		8493425628B8B2A5009C5D7C /* AppDelegate extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate extension.swift"; sourceTree = "<group>"; };
 		8493425928B8C73C009C5D7C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		8493426028B8E741009C5D7C /* EditSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSceneView.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		84260B3A28B7D7ED00718B23 /* ProfileAddingScene */ = {
 			isa = PBXGroup;
 			children = (
+				8443959C28BE423E00EF1EDA /* Metrics.swift */,
 				8439BE2E28BBC90E001C104E /* Presenter */,
 				84260B3B28B7D85900718B23 /* View */,
 			);
@@ -247,7 +250,7 @@
 				84260B1C28B7B3B400718B23 /* Sources */,
 				84260B1D28B7B3B400718B23 /* Frameworks */,
 				84260B1E28B7B3B400718B23 /* Resources */,
-				1E66FEE4C7B8AE8D75A52033 /* [CP] Embed Pods Frameworks */,
+				96C9409EA83A4125ED75E9D0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -304,7 +307,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1E66FEE4C7B8AE8D75A52033 /* [CP] Embed Pods Frameworks */ = {
+		96C9409EA83A4125ED75E9D0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -351,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84260B2428B7B3B400718B23 /* AppDelegate.swift in Sources */,
+				8443959D28BE423E00EF1EDA /* Metrics.swift in Sources */,
 				8493426128B8E741009C5D7C /* EditSceneView.swift in Sources */,
 				84EB0F1728BA16C100094724 /* EditTextField.swift in Sources */,
 				8439BE3328BCB5CA001C104E /* CoreDataHomework.xcdatamodeld in Sources */,
