@@ -10,7 +10,6 @@ import CoreData
 
 protocol ProfileAddingPresenterProtocol {
     init(view: ProfileAddingViewProtocol,
-         container: NSPersistentContainer,
          router: CoreDataRouterInputProtocol)
     func getTableViewHeight(count: Int,
                             height: CGFloat) -> CGFloat
@@ -23,14 +22,13 @@ protocol ProfileAddingPresenterProtocol {
 class ProfileAddingPresenter: ProfileAddingPresenterProtocol {
 // MARK: - Properties
     private var view: ProfileAddingViewProtocol!
-    private var container: NSPersistentContainer!
     private var router: CoreDataRouterInputProtocol!
     private var gettingName: String!
     
 // MARK: - Initialize
-    required init(view: ProfileAddingViewProtocol, container: NSPersistentContainer, router: CoreDataRouterInputProtocol) {
+    required init(view: ProfileAddingViewProtocol,
+                  router: CoreDataRouterInputProtocol) {
         self.view = view
-        self.container = container
         self.router = router
     }
     
@@ -74,30 +72,12 @@ class ProfileAddingPresenter: ProfileAddingPresenterProtocol {
             return
         }
         
-        let managedContext = container.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "Person",
-                                   in: managedContext)!
-        let person = NSManagedObject(entity: entity,
-                                   insertInto: managedContext)
-        person.setValue(name, forKeyPath: "name")
-        
-
-        do {
-            try managedContext.save()
-            view.reloadTableView(person: person)
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
+        view.reloadTableView(person: EditDataClass.getNewObject(name: name)!)
     }
     
     func deleteRow(delete data: NSManagedObject) {
-        container.viewContext.delete(data)
-        do {
-            try container.viewContext.save()
-        } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-        }
+        EditDataClass.deleteData(data: data)
+        EditDataClass.saveData()
     }
     
     func getEditView(name: NSManagedObjectID) -> UIViewController {

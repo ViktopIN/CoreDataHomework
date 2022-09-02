@@ -10,17 +10,13 @@ import UIKit
 import CoreData
 
 class ConfigurationProject {
-    func configuration(container: NSPersistentContainer) -> UIViewController {
+    func configuration() -> UIViewController {
         //Configure project here
         let profileAddingScene = ProfileAddingView()
         let editSceneView = EditSceneView()
-        
-        profileAddingScene.container = container
-        
-        let router = CoreDataRouter(container: profileAddingScene.container,
-                                    getView: editSceneView)
+                
+        let router = CoreDataRouter(getView: editSceneView)
         let profileAddingScenePresenter = ProfileAddingPresenter(view: profileAddingScene,
-                                                                 container: profileAddingScene.container,
                                                                  router: router)
         profileAddingScene.presenter = profileAddingScenePresenter
         

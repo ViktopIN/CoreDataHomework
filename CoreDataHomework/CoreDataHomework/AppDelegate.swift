@@ -14,12 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let container = persistentContainer
-        
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {        
         let getConfiguration = ConfigurationProject()
         
-        let getViewToImplementation = getConfiguration.configuration(container: container)
+        let getViewToImplementation = getConfiguration.configuration()
         
         let navigationController = UINavigationController(rootViewController: getViewToImplementation)
         setupNavigationBar()

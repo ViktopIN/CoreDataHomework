@@ -21,14 +21,12 @@ class EditScenePresenter: EditScenePresenterProtocol {
 // MARK: - Properties
     private var router: CoreDataRouterOutputProtocol!
     private var view: EditSceneViewProtocol!
-    private var container: NSPersistentContainer!
     private var currentObject: NSManagedObject!
     
 // MARK: - Initialize
     required init(view: EditSceneViewProtocol, router: CoreDataRouterOutputProtocol) {
         self.view = view
         self.router = router
-        self.container = router.getContainer()
     }
 // MARK: - Methods
     func saveOrEdit(editButton: UIButton, textFields: [UITextField]) {
@@ -64,7 +62,7 @@ class EditScenePresenter: EditScenePresenterProtocol {
                       birthDate: String,
                       currentCity: String)
         
-        currentObject = container.viewContext.object(with: router.recieveName())
+        currentObject = (EditDataClass.getObject(id: router.recieveName()))!
         strings.0 = currentObject.value(forKeyPath: "name") as? String ?? ""
         strings.1 = currentObject.value(forKeyPath: "birthDate") as? String ?? ""
         strings.2 = currentObject.value(forKeyPath: "currentCity") as? String ?? ""
@@ -83,10 +81,7 @@ class EditScenePresenter: EditScenePresenterProtocol {
         currentObject.setValue(mainName, forKey: "name")
         currentObject.setValue(birthDate, forKey: "birthDate")
         currentObject.setValue(currentCity, forKey: "currentCity")
-        do {
-            try container.viewContext.save()
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
+        
+        EditDataClass.saveData()
     }
 }

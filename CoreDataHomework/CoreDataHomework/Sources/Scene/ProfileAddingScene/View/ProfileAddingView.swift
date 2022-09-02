@@ -20,7 +20,6 @@ class ProfileAddingView: UIViewController {
     }
     var bottomConstraint: Constraint!
     private var cellHeight: CGFloat = Metrics.cellHeight
-    var container: NSPersistentContainer!
     var persons: [NSManagedObject] = []
     var presenter: ProfileAddingPresenterProtocol!
     
@@ -106,10 +105,6 @@ class ProfileAddingView: UIViewController {
         self.title = Strings.title
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        guard container != nil else {
-             fatalError("This view needs a persistent container.")
-         }
-        
         persons = persons.reversed()
     }
     
@@ -147,16 +142,8 @@ class ProfileAddingView: UIViewController {
         navigationController?.navigationBar.subviews.forEach({ $0.removeFromSuperview() })
         
         //container fetch & tableview
-        let managedContext = container.viewContext
-
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Person")
-        fetchRequest.returnsObjectsAsFaults = false
-
-        do {
-            persons = try managedContext.fetch(fetchRequest)
-        } catch let error as NSError {
-          print("Could not fetch. \(error), \(error.userInfo)")
-        }
+        persons = EditDataClass.fetchData()
+        
         persons = persons.reversed()
         namesTableView.reloadData()
     }
