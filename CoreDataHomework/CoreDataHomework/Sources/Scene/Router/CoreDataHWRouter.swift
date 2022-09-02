@@ -9,8 +9,7 @@ import UIKit
 import CoreData
 
 protocol CoreDataRouterOutputProtocol {
-    init(container: NSPersistentContainer, getView: UIViewController)
-    func getContainer() -> NSPersistentContainer
+    init(getView: UIViewController)
     func recieveName() -> NSManagedObjectID
 }
 
@@ -21,20 +20,14 @@ protocol CoreDataRouterInputProtocol {
 
 class CoreDataRouter: CoreDataRouterOutputProtocol {
 // MARK: - Properties
-    var container: NSPersistentContainer!
     var view: UIViewController!
     var name: NSManagedObjectID!
     
 //MARK: - Initialize
-    required init(container: NSPersistentContainer, getView: UIViewController) {
-        self.container = container
+    required init(getView: UIViewController) {
         self.view = getView
     }
-//MARK: - Methods
-    func getContainer() -> NSPersistentContainer {
-        return container
-    }
-    
+//MARK: - Methods    
     func recieveName() -> NSManagedObjectID {
         return name
     }
